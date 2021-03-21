@@ -29,8 +29,11 @@ const TokenArea = styled(BoxDiv) ({
 const Index = () => {
     const dispatch = useDispatch();
     const {text} = useSelector((state:RootState) => state.testReducer)
+    const {accessToken} = useSelector((state:RootState) => state.userReducer)
 
     const [inputText, setInputText] = useState<string>("");
+
+
     
     const changeTextHandler = () => {
         console.log(inputText)
@@ -122,6 +125,9 @@ const Index = () => {
                         onClick={createTokenHandler}>
                         토큰 쿠키 저장
                     </Button>
+                </BoxDiv>
+                <BoxDiv>
+                    store에 저장된 accessToken => {accessToken}
                 </BoxDiv>
 
             </ContainerMainView>

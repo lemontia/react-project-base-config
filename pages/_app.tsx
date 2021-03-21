@@ -29,7 +29,7 @@ RootApp.getInitialProps = async (appContext: AppContext) => {
     const { ctx } = appContext;
     const allCookies = cookies(ctx);
 
-    // accessToken를 이용해 고객정보 조회
+    // accessToken 설정
     const accessTokenByCookie = allCookies['accessToken'];    
     if ((accessTokenByCookie === "" || accessTokenByCookie === undefined) === false) {
         axios.defaults.headers.Authorization = "Bearer " + accessTokenByCookie

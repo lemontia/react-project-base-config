@@ -1,8 +1,13 @@
 # React 프로젝트 설정시 기본설정하는 것 정리
-사용 패키지
-- react
+### 사용법 
+1. git clone
+2. 폴더 이동
+3. 명령어 실행: npm i
+4. 명령어 실행: npm run dev
 
-### redux, next, typescript
+
+### react, redux, next, typescript
+- react
 - redux
 - react-redux 
 - @types/react-redux 

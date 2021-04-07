@@ -4,9 +4,13 @@ import wrapper from '../reducers/configureStore'
 import Layout from '../components/layout/Layout'
 import { BACKEND_URL } from '../config/config'
 import axios from 'axios'
-import GlobalStyle from '../styles/global-styles'
+import {CssBaseline, ThemeProvider as MuiThemeProvider} from "@material-ui/core";
+import {ThemeProvider as StyledThemeProvider} from "styled-components"
 import { SET_TOKEN } from '../reducers/userReducer'
 import cookies from 'next-cookies'
+import {createMuiTheme} from "@material-ui/core";
+import {indigo} from "@material-ui/core/colors";
+import {StylesProvider} from "@material-ui/styles";
 
 
 axios.defaults.withCredentials = true;
@@ -14,13 +18,27 @@ axios.defaults.baseURL = BACKEND_URL
 axios.defaults.timeout = 10000
 
 
+
+const theme = createMuiTheme({
+    palette: {
+        primary: indigo,
+    },
+});
+
+
 const RootApp = ({ Component, pageProps }: AppProps) => {
     return (
         <>
-            <Layout>
-                <GlobalStyle />
-                <Component {...pageProps} />
-            </Layout>
+            <StylesProvider injectFirst>
+                <StyledThemeProvider theme={theme}>
+                    <MuiThemeProvider theme={theme}>
+                        <CssBaseline />
+                        <Layout>
+                            <Component {...pageProps} />
+                        </Layout>
+                    </MuiThemeProvider>
+                </StyledThemeProvider>
+            </StylesProvider>
         </>
     )
 }
